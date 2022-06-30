@@ -1,19 +1,46 @@
 function computerPlay(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    result = Math.floor(Math.random() * (max - min +1) + min);
+    let computerSelection = "";
+    let result = function (min, max) { Math.floor(Math.random() * (max - min)) + min;}
 
-    switch(result){
-        case 1:
-            console.log("Rock")
-            break;
-        case 2:
-            console.log("Paper")
-            break;
-        default:
-            console.log("Scissors")       
+    if(result = 1){
+        computerSelection = "Rock";
+    } else if (result = 2){
+        computerSelection = "Paper";
+    } else {
+        computerSelection = "Scissors";
     }
+     return computerSelection;
 }
-compAnswer = computerPlay(1, 3);
+let computerSelection = computerPlay(1, 3);
+console.log(computerSelection);
 
-//alert(compAnswer);
+
+let playerSelection_nocase = prompt("Your choice? ", " ");
+let playerSelection = playerSelection_nocase.toLowerCase(); //changes the players input to lowercase variable. 
+console.log(playerSelection);
+//alert(computerSelection);
+//alert(playerSelection);
+
+function playRound(playerSelection, computerSelection) {
+    let result = "";
+    if (playerSelection === "rock" && computerSelection === "Paper"){
+        result = "You Lose! Paper beats Rock";
+    } else if (playerSelection === "rock" && computerSelection === "Scissors"){
+        result = "You Win! Rock beats Scissors!";
+    } else if (playerSelection === "paper" && computerSelection === "Rock"){
+        result = "You Win! Paper beats Rock!";
+    } else if (playerSelection === "paper" && computerSelection === "Scissors"){
+        result = "You Lose! Scissors beats Paper";
+    } else if (playerSelection === "scissors" && computerSelection === "Rock") {
+        result = "You Lose! Rock beats Scissors";
+    } else if (playerSelection === "scissors" && computerSelection === "Paper") {
+        result = "You Win! Scissors beats Paper";
+    } else {
+        result = "Tie!";
+    }
+    return result;
+}
+
+let roundResult = playRound(playerSelection, computerSelection);
+
+alert(roundResult);
