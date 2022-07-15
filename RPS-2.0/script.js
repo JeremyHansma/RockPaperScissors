@@ -2,6 +2,7 @@ const selectionButtons = document.querySelectorAll('[data-selection]')
 const finalColumn = document.querySelector('[data-final-column]')
 const computerScoreSpan = document.querySelector('[data-computer-score]')
 const yourScoreSpan = document.querySelector('[data-your-score]')
+const winnningSection = document.querySelector('#grand-winner')
 const CHOICES = [{
     name: 'rock',
     text: 'rock',
@@ -21,6 +22,23 @@ selectionButtons.forEach(selectionButton => {
         const selectionName = selectionButton.dataset.selection 
         const selection = CHOICES.find(selection => selection.name === selectionName)
         makeSelection(selection)
+        console.log(yourScoreSpan.innerText);
+        if(parseInt(yourScoreSpan.innerText) === 5) {
+            const section = document.querySelector('finalfinalResult')
+            const div = document.createElement('div')
+            div.innerText = 'You Win!!'
+            div.classList.add('final-final-Class')
+            section.append(div)
+            //alert('You win!')
+        } if (parseInt(computerScoreSpan.innerText) === 5) {
+            const section = document.querySelector('#finalfinalResult')
+            const div = document.createElement('div')
+            div.innerText = 'You Lose!'
+            div.classList.add('final-final-Class')
+            section.append(div)
+            //alert('You Lose!!')
+        }
+        
     })
 })
 
